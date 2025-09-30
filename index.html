@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kantor Hukum Wandoyo, S.H., M.H. - Profesional Advokat & Konsultan Hukum</title>
+    <!-- Memuat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memuat Lucide Icons untuk estetika -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        /* Style untuk Hero Section dengan image background yang profesional */
+        .hero-bg {
+            background-image: url('images/background.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(2px);
+        }
+        .section-title {
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #1e3a8a; /* Blue-900 */
+            border-radius: 9999px;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        /* Custom CSS untuk Carousel */
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel-slide {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-item {
+            flex: 0 0 100%; /* Setiap item mengambil 100% lebar slide untuk tampilan awal */
+            padding: 0 8px; /* Padding untuk jarak antar gambar di desktop */
+            box-sizing: border-box;
+        }
+        /* Responsif untuk 2 item per slide pada layar MD */
+        @media (min-width: 768px) {
+            .carousel-item {
+                flex: 0 0 50%;
+            }
+        }
+        /* Responsif untuk 4 item per slide pada layar LG */
+        @media (min-width: 1024px) {
+            .carousel-item {
+                flex: 0 0 25%;
+            }
+        }
+        /* Menyembunyikan tombol navigasi manual */
+        .carousel-button {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-extrabold text-blue-900">KANTOR HUKUM WANDOYO</span>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="#home" class="text-gray-900 hover:text-blue-900 inline-flex items-center px-1 pt-1 text-sm font-medium transition duration-150 ease-in-out">Beranda</a>
+                    <a href="#tentang" class="text-gray-500 hover:text-blue-900 inline-flex items-center px-1 pt-1 text-sm font-medium transition duration-150 ease-in-out">Tentang Kami</a>
+                    <a href="#layanan" class="text-gray-500 hover:text-blue-900 inline-flex items-center px-1 pt-1 text-sm font-medium transition duration-150 ease-in-out">Layanan</a>
+                    <a href="#tim" class="text-gray-500 hover:text-blue-900 inline-flex items-center px-1 pt-1 text-sm font-medium transition duration-150 ease-in-out">Tim Kami</a>
+                    <a href="#kontak" class="text-gray-500 hover:text-blue-900 inline-flex items-center px-1 pt-1 text-sm font-medium transition duration-150 ease-in-out">Kontak</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button id="mobile-menu-btn" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div class="sm:hidden" id="mobile-menu" style="display: none;">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#home" class="block pl-3 pr-4 py-2 border-l-4 border-blue-500 text-base font-medium text-blue-700 bg-blue-50">Beranda</a>
+                <a href="#tentang" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-800">Tentang Kami</a>
+                <a href="#layanan" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-800">Layanan</a>
+                <a href="#tim" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-800">Tim Kami</a>
+                <a href="#kontak" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-800">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg h-screen flex items-center justify-center">
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="text-center p-8 max-w-4xl z-10">
+            <div class="mb-4">
+                <i data-lucide="scale" class="w-16 h-16 mx-auto text-yellow-400"></i>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 leading-tight">
+                KANTOR HUKUM <span class="text-red-500">WANDOYO, S.H., M.H.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 font-light mb-8">
+                Profesional Advokat & Konsultan Hukum. Amanah dan Profesional dalam Pelayanan.
+            </p>
+            <a href="#layanan" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                Lihat Layanan Kami
+            </a>
+            <a href="#kontak" class="ml-4 text-white border border-white hover:bg-white hover:text-blue-700 font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+                Hubungi Kami
+            </a>
+        </div>
+    </section>
+
+    <!-- Tentang Kami Section -->
+    <section id="tentang" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-3xl font-bold text-blue-900 mb-12">Tentang Kami</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Salam Kenal</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        Secara legalitas, <b>Kantor Hukum Wandoyo, S.H., M.H.</b> memiliki kewenangan penuh untuk memberikan jasa pelayanan hukum, didukung oleh Akta Nomor 44 Tanggal 23 Juli 2025 dan legalitas resmi melalui Surat Keterangan Terdaftar Nomor: AHU-0001247-AH.01.18 Tahun 2025 dari Kementerian Hukum dan HAM Republik Indonesia. Secara personal, Bapak Wandoyo telah melayani secara profesional sebagai advokat sejak <b>Maret 2016</b>.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-blue-600 mt-1 flex-shrink-0"></i>
+                            <p class="text-gray-700"><strong class="font-semibold">Inovator Hukum:</strong> Menyediakan solusi hukum dengan pendekatan profesional dan kreatif.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-blue-600 mt-1 flex-shrink-0"></i>
+                            <p class="text-gray-700"><strong class="font-semibold">Penyedia Keadilan:</strong> Mempermudah akses keadilan bagi setiap orang, termasuk layanan pro bono.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-blue-600 mt-1 flex-shrink-0"></i>
+                            <p class="text-gray-700"><strong class="font-semibold">Standar Profesional:</strong> Bekerja berdasarkan standar profesional yang tinggi, bukan berdasarkan standar upah.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Image/Placeholder -->
+                <div class="flex justify-center lg:justify-end">
+                    <img src="images/wandoyo.png" alt="Foto Pimpinan Kantor Hukum Wandoyo" class="rounded-lg shadow-xl object-cover">
+                </div>
+            </div>
+
+            <!-- Visi & Misi -->
+            <div class="mt-16 pt-12 border-t border-gray-200">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-blue-900 mb-6">Visi Kami</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-blue-600 font-bold text-lg mr-3 mt-1">01.</span>
+                                <p class="text-gray-700">Menciptakan sistem hukum yang <b>transparan</b> dan dapat diakses oleh seluruh lapisan masyarakat tanpa terkecuali.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 font-bold text-lg mr-3 mt-1">02.</span>
+                                <p class="text-gray-700">Menjadi pelopor dalam pengembangan layanan hukum berbasis <b>inovasi</b> yang berkelanjutan dan berorientasi pada keadilan.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 font-bold text-lg mr-3 mt-1">03.</span>
+                                <p class="text-gray-700">Mengantarkan setiap pencari keadilan menuju solusi hukum terbaik yang membawa rasa aman dan perlindungan.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-blue-900 mb-6">Misi Kami</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i data-lucide="handshake" class="w-5 h-5 text-yellow-600 mt-1 mr-3 flex-shrink-0"></i>
+                                <p class="text-gray-700"><strong class="font-semibold">Keadilan untuk Semua:</strong> Menyediakan layanan hukum yang adil dan setara, termasuk kerja pro bono.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="briefcase" class="w-5 h-5 text-yellow-600 mt-1 mr-3 flex-shrink-0"></i>
+                                <p class="text-gray-700"><strong class="font-semibold">Pelayanan Menyeluruh:</strong> Memberikan layanan komprehensif (konsultasi, litigasi, dan non-litigasi).</p>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="award" class="w-5 h-5 text-yellow-600 mt-1 mr-3 flex-shrink-0"></i>
+                                <p class="text-gray-700"><strong class="font-semibold">Kualitas Unggul:</strong> Memastikan setiap layanan memenuhi standar kualitas tinggi dengan tim profesional.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Layanan Section -->
+    <section id="layanan" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-3xl font-bold text-blue-900 mb-12">Ruang Lingkup Layanan</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Layanan 1: Hukum Perusahaan dan Bisnis -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 card-hover transition duration-300">
+                    <i data-lucide="building-2" class="w-8 h-8 text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Hukum Perusahaan & Bisnis</h3>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li class="flex items-start"><i data-lucide="briefcase" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Tata Kelola Perusahaan & Kepatuhan Regulasi.</span></li>
+                        <li class="flex items-start"><i data-lucide="clipboard-list" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Kontrak Bisnis (Penyusunan, Peninjauan, Negosiasi).</span></li>
+                        <li class="flex items-start"><i data-lucide="megaphone" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Sengketa Usaha (Mediasi, Arbitrase, Litigasi).</span></li>
+                    </ul>
+                </div>
+
+                <!-- Layanan 2: Litigasi (Pengadilan) -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 card-hover transition duration-300">
+                    <i data-lucide="gavel" class="w-8 h-8 text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Layanan Litigasi (Pengadilan)</h3>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li class="flex items-start"><i data-lucide="user-check" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Representasi Hukum dalam Gugatan/Pembelaan.</span></li>
+                        <li class="flex items-start"><i data-lucide="shield-check" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Perlindungan Hak (Pidana, Perdata, PTUN).</span></li>
+                        <li class="flex items-start"><i data-lucide="file-text" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Penyusunan Dokumen Litigasi.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Layanan 3: Non-Litigasi (Alternatif Penyelesaian Sengketa) -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 card-hover transition duration-300">
+                    <i data-lucide="users" class="w-8 h-8 text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Layanan Non-Litigasi</h3>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li class="flex items-start"><i data-lucide="message-square-text" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Negosiasi Profesional.</span></li>
+                        <li class="flex items-start"><i data-lucide="git-merge" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Mediasi dan Arbitrasi Sengketa.</span></li>
+                        <li class="flex items-start"><i data-lucide="file-type" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Pendampingan & Legal Drafting (Non-Sengketa).</span></li>
+                    </ul>
+                </div>
+                
+                <!-- Layanan 4: Hukum Ketenagakerjaan -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 card-hover transition duration-300">
+                    <i data-lucide="factory" class="w-8 h-8 text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Hukum Ketenagakerjaan</h3>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li class="flex items-start"><i data-lucide="file-badge" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Penyusunan dan Peninjauan Kontrak Kerja.</span></li>
+                        <li class="flex items-start"><i data-lucide="x-circle" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Perselisihan Perburuhan (PHI, PHK).</span></li>
+                        <li class="flex items-start"><i data-lucide="wallet" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Perhitungan Hak-Hak Ketenagakerjaan (Pesangon, dll).</span></li>
+                    </ul>
+                </div>
+                
+                <!-- Layanan 5: Opini dan Ulasan Hukum -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 card-hover transition duration-300">
+                    <i data-lucide="book-open-check" class="w-8 h-8 text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Opini & Ulasan Hukum</h3>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li class="flex items-start"><i data-lucide="lightbulb" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Legal Opinion (Interpretasi Hukum).</span></li>
+                        <li class="flex items-start"><i data-lucide="search" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Uji Tuntas Hukum (Legal Due Diligence).</span></li>
+                        <li class="flex items-start"><i data-lucide="alert-triangle" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Analisis Risiko Hukum dan Kepatuhan Regulasi.</span></li>
+                    </ul>
+                </div>
+                
+                <!-- Layanan 6: Hak Kekayaan Intelektual (HAKI) -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 card-hover transition duration-300">
+                    <i data-lucide="sparkles" class="w-8 h-8 text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Hukum Kekayaan Intelektual</h3>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li class="flex items-start"><i data-lucide="bookmark" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Perlindungan Merek Dagang.</span></li>
+                        <li class="flex items-start"><i data-lucide="cpu" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Pendaftaran Paten dan Hak Cipta.</span></li>
+                        <li class="flex items-start"><i data-lucide="scroll-text" class="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-yellow-600"></i><span>Sengketa Pelanggaran HAKI.</span></li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <div class="mt-16 text-center">
+                <p class="text-lg font-medium text-blue-900 mb-4">Misi kami: "MEMBERIKAN SOLUSI TANPA MENGHAKIMI"</p>
+                <a href="#kontak" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-full shadow-md transition duration-300">
+                    Konsultasikan Masalah Hukum Anda
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tim Kami Section -->
+    <section id="tim" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-3xl font-bold text-blue-900 mb-12">Tim Profesional Kami</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                
+                <!-- Tim 1: Wandoyo, S.H., M.H. (Pimpinan/Utama) -->
+                <div class="text-center p-6 bg-gray-50 rounded-xl shadow-lg border-t-4 border-blue-600">
+                    <img src="images/wandoyo 100x120.png" alt="Foto Wandoyo, S.H., M.H." class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md">
+                    <h3 class="text-xl font-bold text-blue-900">Wandoyo, S.H., M.H.</h3>
+                    <p class="text-yellow-600 font-semibold mb-3">Pimpinan Kantor Hukum</p>
+                    <p class="text-sm text-gray-600">Advokat berpengalaman sejak Maret 2016, fokus pada hukum perusahaan, masalah sosial, dan keadilan masyarakat menengah ke bawah.</p>
+                </div>
+
+                <!-- Tim 2: Eddy Budiyanto, S.H. (Partner/Direktur) -->
+                <div class="text-center p-6 bg-gray-50 rounded-xl shadow-lg border-t-4 border-blue-600">
+                    <img src="images/Eddy Budiyanto 100x120.png" alt="Foto Eddy Budiyanto, S.H." class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md">
+                    <h3 class="text-xl font-bold text-blue-900">Eddy Budiyanto, S.H.</h3>
+                    <p class="text-yellow-600 font-semibold mb-3">Partner / Direktur</p>
+                    <p class="text-sm text-gray-600">Berpengalaman luas dalam hukum, dengan cita-cita mewujudkan keadilan sosial bagi seluruh rakyat Indonesia.</p>
+                </div>
+                
+                <!-- Tim 3: Ramona Zabrina, S.H. (Partner) -->
+                <div class="text-center p-6 bg-gray-50 rounded-xl shadow-lg border-t-4 border-blue-600">
+                    <img src="images/Ramona Zabrina 100x120.png" alt="Foto Ramona Zabrina, S.H." class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md">
+                    <h3 class="text-xl font-bold text-blue-900">Ramona Zabrina, S.H.</h3>
+                    <p class="text-yellow-600 font-semibold mb-3">Partner</p>
+                    <p class="text-sm text-gray-600">Spesialisasi di Hukum Perdata, Pidana, PHI, dan PTUN. Aktif di Perkumpulan Bantuan Hukum (PBH) Ramone.</p>
+                </div>
+
+                <!-- Tim 4: Rambo C. Tampubolon, S.H. (Partner) -->
+                <div class="text-center p-6 bg-gray-50 rounded-xl shadow-lg border-t-4 border-blue-600">
+                    <img src="images/Rambo C. Tampubolon 100x120.png" alt="Foto Rambo C. Tampubolon, S.H." class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md">
+                    <h3 class="text-xl font-bold text-blue-900">Rambo C. Tampubolon, S.H.</h3>
+                    <p class="text-yellow-600 font-semibold mb-3">Partner</p>
+                    <p class="text-sm text-gray-600">Lulusan cumlaude, berpengalaman di LBH Jakarta, fokus pada isu publik dan perlindungan HAM.</p>
+                </div>
+                
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Galeri Kegiatan Section (MENGGUNAKAN CAROUSEL AUTO-SCROLL) -->
+    <section id="galeri" class="py-16 md:py-24 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-3xl font-bold text-blue-900 mb-12">Galeri Kegiatan & Pendampingan</h2>
+            
+            <!-- Carousel Container -->
+            <div class="carousel-container relative">
+                <div id="carouselSlide" class="carousel-slide">
+                    <!-- Item 1: Rapat Bisnis -->
+                    <div class="carousel-item">
+                        <img src="images/Rapat dan Diskusi Klien.png" alt="Foto Kegiatan Rapat" class="w-full h-56 object-cover rounded-lg shadow-md mb-2">
+                        <p class="text-center text-sm text-gray-700 font-medium">Rapat dan Diskusi Klien</p>
+                    </div>
+                    <!-- Item 2: Pendampingan Klien -->
+                    <div class="carousel-item">
+                        <img src="images/pendampingan.png" alt="Foto Pendampingan Klien" class="w-full h-56 object-cover rounded-lg shadow-md mb-2">
+                        <p class="text-center text-sm text-gray-700 font-medium">Pendampingan Hukum Keluarga</p>
+                    </div>
+                    <!-- Item 3: Di Persidangan -->
+                    <div class="carousel-item">
+                        <img src="images/Representasi di Pengadilan.png" alt="Foto di Persidangan" class="w-full h-56 object-cover rounded-lg shadow-md mb-2">
+                        <p class="text-center text-sm text-gray-700 font-medium">Representasi di Pengadilan</p>
+                    </div>
+                    <!-- Item 4: Diskusi Hukum -->
+                    <div class="carousel-item">
+                        <img src="images/Konsultasi Hukum Mendalam.png" alt="Foto Diskusi Hukum" class="w-full h-56 object-cover rounded-lg shadow-md mb-2">
+                        <p class="text-center text-sm text-gray-700 font-medium">Konsultasi Hukum Mendalam</p>
+                    </div>
+                    <!-- Item 5: Kerjasama PT -->
+                    <div class="carousel-item">
+                        <img src="images/Legal Drafting & Kontrak Bisnis.png" alt="Foto Serah Terima Dokumen PT" class="w-full h-56 object-cover rounded-lg shadow-md mb-2">
+                        <p class="text-center text-sm text-gray-700 font-medium">Legal Drafting & Kontrak Bisnis</p>
+                    </div>
+                    <!-- Item 6: Advokasi Sosial -->
+                    <div class="carousel-item">
+                        <img src="images/Kegiatan Pro Bono & Sosial.png" alt="Foto Kegiatan Advokasi Sosial" class="w-full h-56 object-cover rounded-lg shadow-md mb-2">
+                        <p class="text-center text-sm text-gray-700 font-medium">Kegiatan Pro Bono & Sosial</p>
+                    </div>
+                    <!-- Item 7: Team Building -->
+                    <div class="carousel-item">
+                        <img src="images/Team Building & Pelestarian Alam.png" alt="Foto Kegiatan Tim 1" class="w-full h-56 object-cover rounded-lg shadow-md mb-2">
+                        <p class="text-center text-sm text-gray-700 font-medium">Team Building & Pelestarian Alam</p>
+                    </div>
+                    <!-- Item 8: Kunjungan -->
+                    <div class="carousel-item">
+                        <img src="images/Kunjungan ke Lembaga Hukum.png" alt="Foto Kegiatan Tim 2" class="w-full h-56 object-cover rounded-lg shadow-md mb-2">
+                        <p class="text-center text-sm text-gray-700 font-medium">Kunjungan ke Lembaga Hukum</p>
+                    </div>
+                    <!-- Kloning item untuk efek loop tak terbatas -->
+                    <div class="carousel-item clone">
+                        <img src="images/Rapat dan Diskusi Klien.png" alt="Foto Kegiatan Rapat" class="w-full h-56 object-cover rounded-lg shadow-md mb-2">
+                        <p class="text-center text-sm text-gray-700 font-medium">Rapat dan Diskusi Klien</p>
+                    </div>
+                    <div class="carousel-item clone">
+                        <img src="images/pendampingan.png" alt="Foto Pendampingan Klien" class="w-full h-56 object-cover rounded-lg shadow-md mb-2">
+                        <p class="text-center text-sm text-gray-700 font-medium">Pendampingan Hukum Keluarga</p>
+                    </div>
+                    <div class="carousel-item clone">
+                        <img src="images/Representasi di Pengadilan.png" alt="Foto di Persidangan" class="w-full h-56 object-cover rounded-lg shadow-md mb-2">
+                        <p class="text-center text-sm text-gray-700 font-medium">Representasi di Pengadilan</p>
+                    </div>
+                    <div class="carousel-item clone">
+                        <img src="images/Konsultasi Hukum Mendalam.png" alt="Foto Diskusi Hukum" class="w-full h-56 object-cover rounded-lg shadow-md mb-2">
+                        <p class="text-center text-sm text-gray-700 font-medium">Konsultasi Hukum Mendalam</p>
+                    </div>
+                </div>
+
+                <!-- Tombol Navigasi (Dibuat permanen tersembunyi via CSS) -->
+                <button id="prevBtn" class="carousel-button">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <button id="nextBtn" class="carousel-button">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <!-- Akhir Carousel Container -->
+        </div>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="kontak" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-3xl font-bold text-blue-900 mb-12">Hubungi Kami</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                
+                <!-- Alamat -->
+                <div class="p-6 bg-gray-50 rounded-xl shadow-lg">
+                    <i data-lucide="map-pin" class="w-8 h-8 text-blue-600 mx-auto mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Kantor Operasional</h3>
+                    <p class="text-gray-700">KPI Building Lantai 2 Ruang Talenta,</p>
+                    <p class="text-gray-700">Jalan Tegal Parang Utara No. 03 Mampang Prapatan.</p>
+                    <p class="text-gray-700">Jakarta Selatan 12790</p>
+                </div>
+                
+                <!-- Telepon -->
+                <div class="p-6 bg-gray-50 rounded-xl shadow-lg">
+                    <i data-lucide="phone" class="w-8 h-8 text-blue-600 mx-auto mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Nomor Telepon</h3>
+                    <p class="text-gray-700 font-medium">Office: +6221 – 2696 - 6520</p>
+                    <p class="text-gray-700 font-medium">Mobile: +62813 – 9887 - 6938</p>
+                </div>
+                
+                <!-- Email -->
+                <div class="p-6 bg-gray-50 rounded-xl shadow-lg">
+                    <i data-lucide="mail" class="w-8 h-8 text-blue-600 mx-auto mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Alamat Email</h3>
+                    <p class="text-gray-700 font-medium">kantorhukum.wandoyoshmh@gmail.com</p>
+                    <p class="text-gray-500 text-sm mt-2">Atau melalui website: www.Wandoyo.com</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-4">
+                <i data-lucide="scale" class="w-8 h-8 mx-auto text-yellow-400"></i>
+                <p class="text-lg font-semibold mt-2">KANTOR HUKUM WANDOYO, S.H., M.H.</p>
+            </div>
+            <p class="text-sm text-gray-300 mb-4">
+                "Wahai orang-orang yang beriman! Jadilah kamu sebagai penegak keadilan karena Allah, (ketika) menjadi saksi dengan adil." (QS: Al Maidah 8)
+            </p>
+            <p class="text-sm text-gray-400">&copy; 2025 Kantor Hukum Wandoyo, S.H., M.H. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript untuk Mobile Menu, Lucide Icons, dan Carousel -->
+    <script>
+        // Inisialisasi Lucide Icons
+        lucide.createIcons();
+
+        // --- JavaScript untuk Mobile Menu ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.style.display = isExpanded ? 'none' : 'block';
+            
+            // Mengganti ikon
+            const icon = mobileMenuBtn.querySelector('i');
+            if (isExpanded) {
+                icon.setAttribute('data-lucide', 'menu');
+            } else {
+                icon.setAttribute('data-lucide', 'x');
+            }
+            lucide.createIcons(); // Re-render icon
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.style.display = 'none';
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+        // --- JavaScript untuk Carousel Galeri Kegiatan (Auto-Scroll Infinite Loop) ---
+        const carouselSlide = document.getElementById('carouselSlide');
+        const items = document.querySelectorAll('.carousel-item:not(.clone)');
+        const totalOriginalItems = items.length;
+        // Menambah item kloning lagi untuk perulangan yang lebih mulus pada layar besar
+        const itemsPerViewToClone = 4; // Kloning maksimal 4 item untuk loop
+        let currentIndex = 0;
+        let itemsPerView = 1;
+        let autoScrollInterval;
+        const autoScrollDelay = 2000; // 4 detik per slide
+
+        function getItemsPerView() {
+            if (window.innerWidth >= 1024) { // Large screens (lg:)
+                return 4;
+            } else if (window.innerWidth >= 768) { // Medium screens (md:)
+                return 2;
+            } else { // Small screens
+                return 1;
+            }
+        }
+
+        function updateCarousel() {
+            const newItemsPerView = getItemsPerView();
+
+            if (itemsPerView !== newItemsPerView) {
+                // Reset currentIndex jika itemsPerView berubah (misalnya saat resize)
+                currentIndex = 0;
+            }
+            itemsPerView = newItemsPerView;
+            
+            // Hitung lebar pergeseran yang diperlukan
+            const itemWidthPercentage = 100 / itemsPerView;
+            
+            // Batas maksimum pergeseran sebelum reset (item asli + item kloning yang diperlukan)
+            // Kita hitung pergerakan sampai item kloning pertama muncul sepenuhnya
+            const maxScrollIndex = totalOriginalItems; 
+
+            // Logika Infinity Loop
+            if (currentIndex >= maxScrollIndex) {
+                // Nonaktifkan transisi sebelum melompat ke posisi reset (index 0)
+                carouselSlide.style.transition = 'none';
+                currentIndex = 0;
+                let offset = currentIndex * itemWidthPercentage;
+                carouselSlide.style.transform = `translateX(-${offset}%)`;
+                
+                // Paksa reflow sebelum mengaktifkan transisi kembali
+                carouselSlide.offsetHeight; 
+                
+                // Aktifkan transisi kembali untuk pergeseran berikutnya
+                carouselSlide.style.transition = 'transform 0.5s ease-in-out';
+            }
+            
+            // Terapkan pergeseran
+            const offset = currentIndex * itemWidthPercentage;
+            carouselSlide.style.transform = `translateX(-${offset}%)`;
+        }
+
+        function autoScrollCarousel() {
+            autoScrollInterval = setInterval(() => {
+                // Pindah ke item berikutnya.
+                currentIndex++;
+                updateCarousel();
+
+            }, autoScrollDelay);
+        }
+
+        // Fungsi untuk menghentikan auto-scroll saat disentuh/hover
+        function stopAutoScroll() {
+            clearInterval(autoScrollInterval);
+        }
+        
+        // Fungsi untuk memulai auto-scroll
+        function startAutoScroll() {
+            // Kita hanya perlu memulai sekali setelah load
+            autoScrollCarousel();
+        }
+
+        // Menghilangkan fungsi manual click pada tombol karena sudah dihandle oleh CSS display:none.
+        // Menghilangkan juga event listener manual dari tombol.
+
+        // Menambahkan lebih banyak kloning ke DOM agar perulangan lebih mulus, 
+        // terutama saat itemsPerView > 2. Kita kloning 4 item.
+        function cloneItemsForLoop() {
+            const slideContainer = document.getElementById('carouselSlide');
+            const originalItems = document.querySelectorAll('.carousel-item:not(.clone)');
+            
+            // Kloning 4 item pertama
+            for (let i = 0; i < itemsPerViewToClone; i++) {
+                const clone = originalItems[i].cloneNode(true);
+                clone.classList.add('clone');
+                slideContainer.appendChild(clone);
+            }
+        }
+
+        // Hentikan auto-scroll saat user mengarahkan mouse/menyentuh container
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('mouseenter', stopAutoScroll);
+        carouselContainer.addEventListener('mouseleave', startAutoScroll);
+        carouselContainer.addEventListener('touchstart', stopAutoScroll);
+        carouselContainer.addEventListener('touchend', startAutoScroll);
+
+
+        // Update carousel pada saat load dan resize window
+        window.addEventListener('load', () => {
+             cloneItemsForLoop(); // Pastikan kloning sudah ada
+             updateCarousel();
+             startAutoScroll(); // Memulai auto-scroll saat halaman dimuat
+        });
+        window.addEventListener('resize', updateCarousel);
+        
+    </script>
+</body>
+</html>
